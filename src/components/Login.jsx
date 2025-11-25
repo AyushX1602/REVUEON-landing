@@ -18,7 +18,7 @@ const Login = () => {
         <FadeIn direction="up">
           <div className="max-w-md mx-auto w-full">
             <h1 className="text-3xl font-heading font-bold mb-2">
-              <span className="bg-brand-primary px-2 py-1">Revyno</span>
+              <span className="bg-brand-primary px-2 py-1">Revueon</span>
             </h1>
             <h2 className="text-4xl font-bold mb-8">Welcome back!</h2>
 

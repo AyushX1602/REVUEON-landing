@@ -31,7 +31,7 @@ const Testimonials = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              quote: "Revyno completely changed how we look at customer feedback. It's not just noise anymore; it's our product roadmap.",
+              quote: "Revueon completely changed how we look at customer feedback. It's not just noise anymore; it's our product roadmap.",
               author: "Sarah Jenkins",
               role: "Head of CX, Glossier"
             },

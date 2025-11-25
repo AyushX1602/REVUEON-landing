@@ -21,7 +21,7 @@ const AIInsight = () => {
                       <div className="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center">
                         <Sparkles size={16} className="text-brand-text" />
                       </div>
-                      <span className="font-heading font-bold">Revyno AI</span>
+                      <span className="font-heading font-bold">Revueon AI</span>
                     </div>
                     <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded text-gray-500">Confidence: 98%</span>
                   </div>

@@ -50,15 +50,15 @@ const MagneticButton = ({ children, className = "", onClick }) => {
   }, { scope: buttonRef });
 
   return (
-    <button
+    <div
       ref={buttonRef}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full transition-transform ${className}`}
+      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full transition-transform cursor-pointer ${className}`}
     >
       <span ref={textRef} className="relative z-10 block">
         {children}
       </span>
-    </button>
+    </div>
   );
 };
 

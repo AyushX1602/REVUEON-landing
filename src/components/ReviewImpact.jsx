@@ -18,7 +18,7 @@ const ReviewImpact = () => {
                 Identify <span className="bg-brand-primary px-2">Business-Impacting</span> Patterns
               </h2>
               <p className="text-xl text-gray-600 mb-8">
-                Revyno visualizes your analytics via clean, interactive dashboards. See exactly how sentiment trends affect your bottom line.
+                Revueon visualizes your analytics via clean, interactive dashboards. See exactly how sentiment trends affect your bottom line.
               </p>
               
               <div className="grid grid-cols-2 gap-6">

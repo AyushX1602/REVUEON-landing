@@ -7,7 +7,7 @@ Elevated the `google_fixed` application to a top-tier "11/10" SaaS aesthetic, fo
 
 ### 1. Kinetic Typography Intro (`KineticIntro.jsx`)
 - **Upgrade**: Replaced the curtain reveal with a bold, high-energy **Kinetic Typography** intro.
-- **Effect**: Massive text ("REVYNO") scales up to fill the screen, creating a high-impact, modern brand reveal that transitions seamlessly into the hero section.
+- **Effect**: Massive text ("REVUEON") scales up to fill the screen, creating a high-impact, modern brand reveal that transitions seamlessly into the hero section.
 
 ### 2. "Connecting Line" Workflow (`Workflow.jsx`)
 - **Upgrade**: Transformed the horizontal scroll into a cohesive journey.

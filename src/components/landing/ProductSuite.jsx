@@ -9,7 +9,7 @@ const ProductSuite = () => {
   const products = [
     {
       id: 1,
-      category: "Revyno Intelligence",
+      category: "Revueon Intelligence",
       title: "AI that works for you",
       description: "Automate 80% of your analysis with our proprietary AI models.",
       icon: <Brain className="w-8 h-8" />,
@@ -35,7 +35,7 @@ const ProductSuite = () => {
       icon: <TrendingUp className="w-6 h-6" />,
       color: "bg-[#E3F221]",
       colSpan: "md:col-span-1 md:row-span-1",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800"
     },
     {
       id: 4,
@@ -50,7 +50,7 @@ const ProductSuite = () => {
   ];
 
   return (
-    <section ref={containerRef} className="py-32 bg-[#111]">
+    <section ref={containerRef} className="relative z-30 py-32 bg-[#111]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="mb-20">
                 <div className="text-sm font-bold text-[#E3F221] mb-4 tracking-widest uppercase">

@@ -10,7 +10,7 @@ const DashboardAI = () => {
         </div>
         <div>
           <h1 className="text-2xl font-bold text-brand-text">AI Insights</h1>
-          <p className="text-gray-500 text-sm">Powered by Revyno Intelligence</p>
+          <p className="text-gray-500 text-sm">Powered by Revueon Intelligence</p>
         </div>
       </div>
 

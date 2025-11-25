@@ -90,7 +90,7 @@ const Workflow = () => {
         <div className="px-4 sm:px-6 lg:px-8 mb-12 flex items-end justify-between max-w-7xl mx-auto w-full">
           <div>
             <h2 className="text-3xl md:text-5xl font-heading font-medium text-[#E3F221] mb-4">
-              How Revyno Works
+              How Revueon Works
             </h2>
             <p className="text-white/60 text-lg max-w-xl">
               A simple, powerful workflow designed for modern teams.

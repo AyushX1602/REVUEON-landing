@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="text-2xl font-heading font-bold text-brand-text tracking-tight mb-4 block">
-              Revyno
+              Revueon
             </a>
             <p className="text-gray-500 text-sm leading-relaxed">
               Helping Shopify brands turn customer feedback into actionable growth strategies.
@@ -47,7 +47,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-100">
           <p className="text-sm text-gray-400 mb-4 md:mb-0">
-            © 2025 Revyno Inc. All rights reserved.
+            © 2025 Revueon Inc. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-brand-text"><Twitter size={20} /></a>

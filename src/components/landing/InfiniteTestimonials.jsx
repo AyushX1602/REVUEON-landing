@@ -10,7 +10,7 @@ const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "VP of Sales, TechFlow",
-    quote: "Revyno completely transformed how we handle customer feedback. The AI insights are scary good.",
+    quote: "Revueon completely transformed how we handle customer feedback. The AI insights are scary good.",
     image: "https://randomuser.me/api/portraits/women/1.jpg"
   },
   {
@@ -83,7 +83,7 @@ const InfiniteTestimonials = () => {
           Loved by <span className="text-[#E3F221]">Innovators</span>
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Join thousands of teams who are scaling faster with Revyno.
+          Join thousands of teams who are scaling faster with Revueon.
         </p>
       </div>
 

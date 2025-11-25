@@ -18,7 +18,7 @@ const DashboardLayout = ({ children }) => {
       <aside className="w-64 bg-white border-r border-gray-200 fixed h-full z-20 hidden lg:flex flex-col">
         <div className="p-6 border-b border-gray-100">
           <Link to="/" className="text-2xl font-heading font-bold text-brand-text tracking-tight flex items-center gap-2">
-            <span className="bg-brand-primary px-2 py-1">Revyno</span>
+            <span className="bg-brand-primary px-2 py-1">Revueon</span>
           </Link>
         </div>
 
@@ -55,7 +55,7 @@ const DashboardLayout = ({ children }) => {
         {/* Header */}
         <header className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8 sticky top-0 z-10">
           <div className="flex items-center gap-4 lg:hidden">
-            <span className="font-heading font-bold text-xl">Revyno</span>
+            <span className="font-heading font-bold text-xl">Revueon</span>
           </div>
 
           <div className="flex-1 max-w-xl hidden md:block">

@@ -27,7 +27,7 @@ const Hero = () => {
           
           <FadeIn delay={0.2}>
             <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Revyno is a premium analytics platform for Shopify merchants. We analyze sentiment trends and business-impacting patterns to help you make smarter decisions.
+              Revueon is a premium analytics platform for Shopify merchants. We analyze sentiment trends and business-impacting patterns to help you make smarter decisions.
             </p>
           </FadeIn>
 
