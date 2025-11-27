@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ReviewTrends } from './ReviewTrends';
 import { TopInsights } from './TopInsights';
 import { ProductsTable } from './ProductsTable';

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { FAQSection } from './support/FAQSection';
 import { ContactSupport } from './support/ContactSupport';
 import { DocumentationLinks } from './support/DocumentationLinks';

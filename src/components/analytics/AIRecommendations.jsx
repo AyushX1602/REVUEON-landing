@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Sparkles, Check, X, Flag, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '../../contexts/ToastContext';

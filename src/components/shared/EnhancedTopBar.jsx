@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Bell, Download, User, ChevronDown, Settings, LogOut, Search, Command } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 

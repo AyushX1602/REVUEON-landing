@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 export class ErrorBoundary extends Component {

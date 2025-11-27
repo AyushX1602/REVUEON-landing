@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, animate } from 'motion/react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { TrendingUp, TrendingDown, Users, ShoppingCart, Eye, Star } from 'lucide-react';
 import { useEffect } from 'react';
 

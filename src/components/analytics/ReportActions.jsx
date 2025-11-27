@@ -1,5 +1,5 @@
 import { Download, Mail } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export function ReportActions() {
   const handleDownloadPDF = () => {

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export function SectionDivider({ title, subtitle, className = '' }) {
   if (!title && !subtitle) {

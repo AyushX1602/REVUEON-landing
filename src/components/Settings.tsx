@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { AccountSettings } from './settings/AccountSettings';
 import { NotificationSettings } from './settings/NotificationSettings';
 import { IntegrationSettings } from './settings/IntegrationSettings';

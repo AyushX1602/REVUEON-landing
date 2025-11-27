@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Calendar, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 

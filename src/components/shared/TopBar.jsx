@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Bell, Download, ChevronDown, Settings, LogOut, User } from 'lucide-react';
 import { useState } from 'react';
 import { DateRangePicker } from './DateRangePicker';

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { User, Mail, Building } from 'lucide-react';
 
 export function AccountSettings() {

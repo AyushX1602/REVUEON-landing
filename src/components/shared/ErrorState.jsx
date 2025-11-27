@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { AlertCircle, RefreshCw } from 'lucide-react';
 
 export function ErrorState({ 

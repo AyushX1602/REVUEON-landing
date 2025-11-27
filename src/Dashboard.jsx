@@ -11,7 +11,7 @@ import { ToastProvider } from './contexts/ToastContext';
 import { ErrorBoundary } from './components/shared/ErrorBoundary';
 import { CommandPalette } from './components/shared/CommandPalette';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');

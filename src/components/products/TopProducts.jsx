@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Star, TrendingUp } from 'lucide-react';
 
 const topProducts = [

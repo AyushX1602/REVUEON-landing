@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Star, TrendingUp, AlertCircle, Search, Filter, ArrowUpDown } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { EmptyState } from '../shared/EmptyState';

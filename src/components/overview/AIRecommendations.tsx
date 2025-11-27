@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, CheckCircle, Clock, Flag, AlertTriangle, Info } from 'lucide-react';
 
 interface Recommendation {

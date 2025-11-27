@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { StatsCards } from './analytics/StatsCards';
 import { InteractiveSentimentChart } from './analytics/InteractiveSentimentChart';
 import { EnhancedAnalyticsChart } from './analytics/EnhancedAnalyticsChart';

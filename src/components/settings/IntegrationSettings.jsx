@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Package, ShoppingBag, Star, CheckCircle } from 'lucide-react';
 
 const integrations = [
