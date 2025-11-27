@@ -18,10 +18,14 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Product</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-brand-primary">Features</a></li>
-              <li><a href="#" className="hover:text-brand-primary">Pricing</a></li>
-              <li><a href="#" className="hover:text-brand-primary">Integrations</a></li>
-              <li><a href="#" className="hover:text-brand-primary">Changelog</a></li>
+              {['Features', 'Pricing', 'Integrations', 'Changelog'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="hover:text-brand-primary transition-colors flex items-center gap-1 group">
+                    {item}
+                    <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -53,8 +57,15 @@ const Footer = () => {
             <a href="#" className="text-gray-400 hover:text-brand-text"><Twitter size={20} /></a>
             <a href="#" className="text-gray-400 hover:text-brand-text"><Linkedin size={20} /></a>
             <a href="#" className="text-gray-400 hover:text-brand-text"><Github size={20} /></a>
-          </div>
+      </div>
         </div>
+      </div>
+      
+      {/* Massive Footer Watermark */}
+      <div className="w-full overflow-hidden pointer-events-none select-none opacity-[0.03]">
+        <h1 className="text-[15vw] font-bold text-center leading-none tracking-tighter text-[#47423D]">
+          REVUEON
+        </h1>
       </div>
     </footer>
   );

@@ -1,11 +1,66 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { TrendingUp } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FadeIn from './FadeIn';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const ReviewImpact = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    // Count Up Animation
+    const stats = containerRef.current.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+      const value = parseFloat(stat.getAttribute('data-value'));
+      const suffix = stat.getAttribute('data-suffix') || '';
+      const prefix = stat.getAttribute('data-prefix') || '';
+      
+      gsap.fromTo(stat, 
+        { innerText: 0 },
+        {
+          innerText: value,
+          duration: 2,
+          ease: "power2.out",
+          snap: { innerText: 0.1 },
+          scrollTrigger: {
+            trigger: stat,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          onUpdate: function() {
+            stat.innerText = prefix + Math.ceil(this.targets()[0].innerText) + suffix;
+            // Handle decimal for 3.5x
+            if (value % 1 !== 0) {
+               stat.innerText = prefix + Number(this.targets()[0].innerText).toFixed(1) + suffix;
+            }
+          }
+        }
+      );
+    });
+
+    // Chart Animation
+    const bars = containerRef.current.querySelectorAll('.chart-bar');
+    gsap.fromTo(bars,
+      { height: "0%" },
+      {
+        height: (i, target) => target.getAttribute('data-height'),
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current.querySelector('.chart-container'),
+          start: "top 70%",
+        }
+      }
+    );
+
+  }, { scope: containerRef });
+
   return (
-    <section id="impact" className="py-24 bg-brand-bg overflow-hidden">
+    <section id="impact" className="py-24 bg-brand-bg overflow-hidden" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-20">
           <div className="flex-1">
@@ -22,20 +77,14 @@ const ReviewImpact = () => {
               </p>
               
               <div className="grid grid-cols-2 gap-6">
-                <motion.div 
-                  whileHover={{ y: -5 }}
-                  className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
-                >
-                  <p className="text-4xl font-bold text-brand-text mb-2">+24%</p>
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
+                  <p className="text-4xl font-bold text-brand-text mb-2 stat-number" data-value="24" data-prefix="+" data-suffix="%">0%</p>
                   <p className="text-gray-500 text-sm">Conversion Rate</p>
-                </motion.div>
-                <motion.div 
-                  whileHover={{ y: -5 }}
-                  className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
-                >
-                  <p className="text-4xl font-bold text-brand-text mb-2">3.5x</p>
+                </div>
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
+                  <p className="text-4xl font-bold text-brand-text mb-2 stat-number" data-value="3.5" data-suffix="x">0x</p>
                   <p className="text-gray-500 text-sm">Return on Ad Spend</p>
-                </motion.div>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -43,16 +92,15 @@ const ReviewImpact = () => {
           <div className="flex-1 w-full relative">
             <FadeIn direction="left">
               {/* Abstract Chart Visualization */}
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-8 relative z-10">
+              <div className="chart-container bg-white rounded-3xl shadow-xl border border-gray-200 p-8 relative z-10">
                 <div className="flex justify-between items-end h-64 gap-4">
                   {[40, 65, 55, 80, 70, 90, 100].map((height, i) => (
                     <div key={i} className="w-full bg-brand-bg rounded-t-lg relative group overflow-hidden">
-                      <motion.div 
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${height}%` }}
-                        transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                        className="absolute bottom-0 left-0 right-0 bg-brand-text group-hover:bg-brand-primary transition-colors duration-300"
-                      ></motion.div>
+                      <div 
+                        className="chart-bar absolute bottom-0 left-0 right-0 bg-brand-text group-hover:bg-brand-primary transition-colors duration-300"
+                        data-height={`${height}%`}
+                        style={{ height: 0 }}
+                      ></div>
                     </div>
                   ))}
                 </div>

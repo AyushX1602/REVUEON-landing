@@ -70,8 +70,8 @@ const Hero = () => {
     <div ref={containerRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#E3F221]/20 rounded-full blur-[120px] opacity-50" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#5B5F97]/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#E3F221]/20 rounded-full blur-[120px] opacity-50 animate-[pulse_8s_ease-in-out_infinite]" />
+        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#5B5F97]/10 rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite_reverse]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -80,7 +80,7 @@ const Hero = () => {
           <ScrollRevealText>
             <h1 className="text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight mb-6 leading-tight">
               Turn Shopify Reviews <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] to-[#b8c418]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
                 into Revenue
               </span>
             </h1>
@@ -95,9 +95,12 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up delay-300">
             <MagneticButton>
-              <button className="px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#E3F221]/20 transition-all duration-300 flex items-center gap-2">
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
+              <button className="px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold text-lg hover:shadow-[0_0_30px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
+                <span className="relative z-10 flex items-center gap-2">
+                  Start Free Trial
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </button>
             </MagneticButton>
             

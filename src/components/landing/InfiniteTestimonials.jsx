@@ -93,19 +93,37 @@ const InfiniteTestimonials = () => {
           {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
             <div 
               key={i}
-              className="w-[400px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300"
+              className="group relative w-[400px] bg-white/5 rounded-2xl p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+              }}
             >
-              <div className="flex gap-1 mb-4">
-                {[1,2,3,4,5].map(star => (
-                  <Star key={star} className="w-4 h-4 text-[#E3F221] fill-current" />
-                ))}
-              </div>
-              <p className="text-white/80 text-lg mb-6 leading-relaxed">"{t.quote}"</p>
-              <div className="flex items-center gap-4">
-                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full border-2 border-[#E3F221]/20" />
-                <div>
-                  <div className="text-white font-bold">{t.name}</div>
-                  <div className="text-[#E3F221] text-sm">{t.role}</div>
+              {/* Spotlight Gradient */}
+              <div 
+                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(227, 242, 33, 0.15), transparent 40%)`
+                }}
+              />
+              <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+
+              <div className="relative z-10">
+                <div className="flex gap-1 mb-4">
+                  {[1,2,3,4,5].map(star => (
+                    <Star key={star} className="w-4 h-4 text-[#E3F221] fill-current" />
+                  ))}
+                </div>
+                <p className="text-white/80 text-lg mb-6 leading-relaxed">"{t.quote}"</p>
+                <div className="flex items-center gap-4">
+                  <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full border-2 border-[#E3F221]/20" />
+                  <div>
+                    <div className="text-white font-bold">{t.name}</div>
+                    <div className="text-[#E3F221] text-sm">{t.role}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,19 +135,37 @@ const InfiniteTestimonials = () => {
           {[...testimonials, ...testimonials, ...testimonials].reverse().map((t, i) => (
             <div 
               key={i}
-              className="w-[400px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300"
+              className="group relative w-[400px] bg-white/5 rounded-2xl p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+              }}
             >
-              <div className="flex gap-1 mb-4">
-                {[1,2,3,4,5].map(star => (
-                  <Star key={star} className="w-4 h-4 text-[#5B5F97] fill-current" />
-                ))}
-              </div>
-              <p className="text-white/80 text-lg mb-6 leading-relaxed">"{t.quote}"</p>
-              <div className="flex items-center gap-4">
-                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full border-2 border-[#5B5F97]/20" />
-                <div>
-                  <div className="text-white font-bold">{t.name}</div>
-                  <div className="text-[#5B5F97] text-sm">{t.role}</div>
+              {/* Spotlight Gradient (Purple for Row 2) */}
+              <div 
+                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(91, 95, 151, 0.2), transparent 40%)`
+                }}
+              />
+              <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+
+              <div className="relative z-10">
+                <div className="flex gap-1 mb-4">
+                  {[1,2,3,4,5].map(star => (
+                    <Star key={star} className="w-4 h-4 text-[#5B5F97] fill-current" />
+                  ))}
+                </div>
+                <p className="text-white/80 text-lg mb-6 leading-relaxed">"{t.quote}"</p>
+                <div className="flex items-center gap-4">
+                  <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full border-2 border-[#5B5F97]/20" />
+                  <div>
+                    <div className="text-white font-bold">{t.name}</div>
+                    <div className="text-[#5B5F97] text-sm">{t.role}</div>
+                  </div>
                 </div>
               </div>
             </div>

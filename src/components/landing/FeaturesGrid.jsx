@@ -88,8 +88,16 @@ const FeaturesGrid = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-[#F8F7F7]">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-6 bg-[#F8F7F7] relative overflow-hidden">
+      {/* 1. Dot Pattern Background for Texture */}
+      <div className="absolute inset-0 opacity-[0.4]" 
+           style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
+      </div>
+
+      {/* 2. Gradient Transition to Dark Mode (ProductSuite) */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#111] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12 text-center">
           <ScrollRevealText>
             <h2 className="text-4xl md:text-5xl font-bold text-[#111] font-heading mb-4">
@@ -98,7 +106,7 @@ const FeaturesGrid = () => {
             </h2>
           </ScrollRevealText>
           
-          {/* Live Review Stream - Static for stability */}
+          {/* Live Review Stream - Animated Ticker */}
           <div className="my-12 max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
               <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
@@ -106,30 +114,41 @@ const FeaturesGrid = () => {
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                   <span className="text-sm font-semibold text-gray-600">Live Review Stream</span>
                 </div>
-                <span className="text-xs text-gray-400 font-mono">Analyzing Store...</span>
+                <span className="text-xs text-gray-400 font-mono">Real-time Feed</span>
               </div>
-              <div className="p-2">
-                {[
-                  { icon: "Star", color: "text-green-600", bg: "bg-green-50", text: "New 5-Star Review: \"Love the quality!\"", time: "Just now", sentiment: "Positive" },
-                  { icon: "AlertTriangle", color: "text-red-500", bg: "bg-red-50", text: "Negative Sentiment: \"Shipping was slow\"", time: "2m ago", sentiment: "Negative" },
-                  { icon: "TrendingUp", color: "text-[#E3F221]", bg: "bg-yellow-50", text: "Trend Alert: \"Sizing\" mentions up 15%", time: "5m ago", sentiment: "Neutral" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors cursor-default group">
-                    <div className={`w-10 h-10 rounded-full ${item.bg} flex items-center justify-center ${item.color}`}>
-                      {/* Simple Icons */}
-                      <div className="w-5 h-5 bg-current opacity-20 rounded-full" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-700 group-hover:text-[#5B5F97] transition-colors">{item.text}</p>
-                    </div>
-                    <div className="flex flex-col items-end">
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${item.sentiment === 'Positive' ? 'bg-green-100 text-green-700' : item.sentiment === 'Negative' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                            {item.sentiment}
-                        </span>
-                        <span className="text-xs text-gray-400">{item.time}</span>
-                    </div>
-                  </div>
-                ))}
+              <div className="p-2 h-[200px] overflow-hidden relative">
+                 {/* Mask for fade out at bottom */}
+                 <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
+                 
+                 <div className="animate-[scrollY_10s_linear_infinite]">
+                    {[
+                      { icon: "Star", color: "text-green-600", bg: "bg-green-50", text: "New 5-Star Review: \"Love the quality!\"", time: "Just now", sentiment: "Positive" },
+                      { icon: "AlertTriangle", color: "text-red-500", bg: "bg-red-50", text: "Negative Sentiment: \"Shipping was slow\"", time: "2m ago", sentiment: "Negative" },
+                      { icon: "TrendingUp", color: "text-[#E3F221]", bg: "bg-yellow-50", text: "Trend Alert: \"Sizing\" mentions up 15%", time: "5m ago", sentiment: "Neutral" },
+                      { icon: "Star", color: "text-green-600", bg: "bg-green-50", text: "New 5-Star Review: \"Best purchase ever\"", time: "8m ago", sentiment: "Positive" },
+                      { icon: "MessageCircle", color: "text-blue-500", bg: "bg-blue-50", text: "Question: \"Do you ship to Canada?\"", time: "12m ago", sentiment: "Neutral" },
+                      { icon: "Star", color: "text-green-600", bg: "bg-green-50", text: "New 5-Star Review: \"Customer service is A+\"", time: "15m ago", sentiment: "Positive" },
+                      // Duplicate for seamless loop
+                      { icon: "Star", color: "text-green-600", bg: "bg-green-50", text: "New 5-Star Review: \"Love the quality!\"", time: "Just now", sentiment: "Positive" },
+                      { icon: "AlertTriangle", color: "text-red-500", bg: "bg-red-50", text: "Negative Sentiment: \"Shipping was slow\"", time: "2m ago", sentiment: "Negative" },
+                      { icon: "TrendingUp", color: "text-[#E3F221]", bg: "bg-yellow-50", text: "Trend Alert: \"Sizing\" mentions up 15%", time: "5m ago", sentiment: "Neutral" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-4 p-3 mb-2 hover:bg-gray-50 rounded-lg transition-colors cursor-default group">
+                        <div className={`w-10 h-10 rounded-full ${item.bg} flex items-center justify-center ${item.color}`}>
+                          <div className="w-5 h-5 bg-current opacity-20 rounded-full" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-gray-700 group-hover:text-[#5B5F97] transition-colors">{item.text}</p>
+                        </div>
+                        <div className="flex flex-col items-end">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${item.sentiment === 'Positive' ? 'bg-green-100 text-green-700' : item.sentiment === 'Negative' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                {item.sentiment}
+                            </span>
+                            <span className="text-xs text-gray-400">{item.time}</span>
+                        </div>
+                      </div>
+                    ))}
+                 </div>
               </div>
             </div>
           </div>
@@ -148,9 +167,14 @@ const FeaturesGrid = () => {
               key={feature.id}
               className={`group relative overflow-hidden rounded-3xl p-8 ${feature.colSpan} ${feature.bgClass} shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent ${feature.borderClass}`}
             >
+              {/* 3. Shimmer Effect for Enterprise Card */}
+              {feature.id === 4 && (
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-20 pointer-events-none" />
+              )}
+
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div className="mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center mb-6 backdrop-blur-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center mb-6 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white group-hover:shadow-md">
                     {feature.icon}
                   </div>
                   <h3 className={`text-2xl font-bold mb-2 ${feature.textClass}`}>{feature.title}</h3>

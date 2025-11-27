@@ -50,8 +50,12 @@ const ProductSuite = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative z-30 py-32 bg-[#111]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section ref={containerRef} className="relative z-30 py-32 bg-[#111] overflow-hidden">
+        {/* Ambient Background Orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#5B5F97]/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#E3F221]/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="mb-20">
                 <div className="text-sm font-bold text-[#E3F221] mb-4 tracking-widest uppercase">
                     REVUEON PRODUCT SUITE
@@ -135,7 +139,22 @@ const ProductSuite = () => {
                         key={product.id}
                         ref={el => cardsRef.current[index] = el}
                         className={`group relative z-50 !opacity-100 !visible overflow-hidden rounded-3xl bg-[#1A1A1A] border border-white/10 p-8 transition-all duration-500 hover:border-[#E3F221]/30 hover:shadow-2xl hover:shadow-[#E3F221]/10 ${product.colSpan}`}
+                        onMouseMove={(e) => {
+                            const rect = e.currentTarget.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                            e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+                        }}
                     >
+                        {/* 3D Glare Effect */}
+                        <div 
+                            className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30"
+                            style={{
+                                background: `radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%)`
+                            }}
+                        />
+
                         {/* Background Image Reveal - High Visibility */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-700">
                             <img src={product.image} alt="" className="w-full h-full object-cover" />
