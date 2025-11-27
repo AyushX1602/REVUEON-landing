@@ -36,6 +36,37 @@ const ParallaxSection = () => {
     // Background Orb - Moves down (opposition)
     tl.to(bgOrbRef.current, { y: 200, scale: 1.2 }, 0);
 
+    // Mouse Parallax
+    const xTo1 = gsap.quickTo(card1Ref.current, "x", { duration: 0.5, ease: "power3" });
+    const yTo1 = gsap.quickTo(card1Ref.current, "y", { duration: 0.5, ease: "power3" });
+    
+    const xTo2 = gsap.quickTo(card2Ref.current, "x", { duration: 0.5, ease: "power3" });
+    const yTo2 = gsap.quickTo(card2Ref.current, "y", { duration: 0.5, ease: "power3" });
+    
+    const xTo3 = gsap.quickTo(card3Ref.current, "x", { duration: 0.5, ease: "power3" });
+    const yTo3 = gsap.quickTo(card3Ref.current, "y", { duration: 0.5, ease: "power3" });
+
+    const handleMouseMove = (e) => {
+      const { clientX, clientY, innerWidth, innerHeight } = e;
+      const x = (clientX / innerWidth - 0.5) * 2; // -1 to 1
+      const y = (clientY / innerHeight - 0.5) * 2; // -1 to 1
+
+      // Card 1 (Left) - Deep layer
+      xTo1(x * -30);
+      yTo1(y * -30 - 150); // Keep the scroll offset (-150)
+
+      // Card 2 (Center) - Mid layer
+      xTo2(x * 20);
+      yTo2(y * 20 - 50); // Keep scroll offset (-50)
+
+      // Card 3 (Right) - Front layer
+      xTo3(x * -50);
+      yTo3(y * -50 - 200); // Keep scroll offset (-200)
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+
   }, { scope: containerRef });
 
   return (

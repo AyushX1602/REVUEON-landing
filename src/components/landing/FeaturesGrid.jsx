@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BarChart3, Globe, Zap, Shield, ArrowUpRight } from 'lucide-react';
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollRevealText from './ScrollRevealText';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const FeaturesGrid = () => {
+  const containerRef = useRef(null);
+  const gridRef = useRef(null);
+
+  useGSAP(() => {
+    const cards = gridRef.current.children;
+    gsap.fromTo(cards,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  }, { scope: containerRef });
+
   // Chart Data
   const chartData = [
     { value: 30 }, { value: 45 }, { value: 35 }, { value: 60 }, { value: 50 }, { value: 75 }, { value: 65 }, { value: 85 }
@@ -21,7 +48,7 @@ const FeaturesGrid = () => {
       descClass: "text-gray-500",
       borderClass: "hover:border-[#E3F221]",
       visual: (
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+        <div className="absolute bottom-0 right-0 w-1/2 h-32 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData}>
               <defs>
@@ -88,7 +115,7 @@ const FeaturesGrid = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-[#F8F7F7] relative overflow-hidden">
+    <section ref={containerRef} className="py-20 px-6 bg-[#F8F7F7] relative overflow-hidden">
       {/* 1. Dot Pattern Background for Texture */}
       <div className="absolute inset-0 opacity-[0.4]" 
            style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
@@ -161,7 +188,7 @@ const FeaturesGrid = () => {
         </div>
 
         {/* The Grid - Clean, No GSAP, Pure CSS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature) => (
             <div
               key={feature.id}

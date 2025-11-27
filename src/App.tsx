@@ -3,40 +3,14 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import LandingPage from './components/landing/LandingPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Dashboard from './Dashboard';
-import PageLoader from './components/PageLoader';
 import Lenis from 'lenis';
-import WelcomePreloader from './components/landing/WelcomePreloader';
 import KineticIntro from './components/landing/KineticIntro';
-
 function AppContent() {
-  const location = useLocation();
-  const [isDashboardLoading, setIsDashboardLoading] = useState(false);
-
-  useEffect(() => {
-    if (location.pathname.startsWith('/dashboard')) {
-      setIsDashboardLoading(true);
-      const timer = setTimeout(() => setIsDashboardLoading(false), 1500);
-      return () => clearTimeout(timer);
-    } else {
-      setIsDashboardLoading(false);
-    }
-  }, [location.pathname]);
-
-  if (isDashboardLoading) {
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#F8F7F7]">
-        <PageLoader />
-      </div>
-    );
-  }
-
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
     </Routes>
   );
 }
@@ -58,12 +32,12 @@ function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 2.0, // Increased from 1.2 for more "weight"
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Keep easeOutExpo
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.8, // Slightly reduced for smoother control
       touchMultiplier: 2,
     });
 

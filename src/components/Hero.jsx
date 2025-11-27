@@ -76,56 +76,79 @@ const Hero = () => {
 
         {/* Abstract Visual Element */}
         <FadeIn delay={0.5} direction="up" className="mt-20 relative mx-auto max-w-5xl perspective-1000">
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.setProperty('--rx', '0deg');
-              e.currentTarget.style.setProperty('--ry', '0deg');
+          {/* Floating Wrapper */}
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ 
+              duration: 6, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
             }}
-            style={{
-              transform: 'rotateX(var(--rx)) rotateY(var(--ry))',
-              transition: 'transform 0.1s ease-out'
-            }}
-            className="aspect-[16/9] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden relative group transform-gpu transition-transform duration-200 ease-out hover:shadow-brand-primary/10"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-50 pointer-events-none"></div>
-            
-            {/* Mock UI Elements */}
-            <div className="absolute inset-0 p-8 flex flex-col pointer-events-none">
-              <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-4">
-                <div className="w-32 h-8 bg-gray-100 rounded-lg animate-pulse"></div>
-                <div className="flex-1"></div>
-                <div className="w-8 h-8 bg-gray-100 rounded-full"></div>
-              </div>
-              <div className="flex gap-8 h-full">
-                <div className="w-1/4 space-y-4">
-                  <div className="w-full h-12 bg-brand-bg rounded-lg"></div>
-                  <div className="w-full h-8 bg-gray-50 rounded-lg"></div>
-                  <div className="w-full h-8 bg-gray-50 rounded-lg"></div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.setProperty('--rx', '0deg');
+                e.currentTarget.style.setProperty('--ry', '0deg');
+              }}
+              style={{
+                transform: 'rotateX(var(--rx)) rotateY(var(--ry))',
+                transition: 'transform 0.1s ease-out'
+              }}
+              className="aspect-[16/9] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden relative group transform-gpu transition-transform duration-200 ease-out hover:shadow-brand-primary/10"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-50 pointer-events-none"></div>
+              
+              {/* Mock UI Elements */}
+              <div className="absolute inset-0 p-8 flex flex-col pointer-events-none">
+                <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-4">
+                  <div className="w-32 h-8 bg-gray-100 rounded-lg animate-pulse"></div>
+                  <div className="flex-1"></div>
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
+                  </div>
                 </div>
-                <div className="flex-1 bg-brand-surface rounded-xl p-6 border border-gray-100 relative overflow-hidden">
-                  {/* Animated Chart Bars */}
-                  <div className="flex items-end justify-between h-full gap-4 px-4 pb-4">
-                    {[40, 70, 50, 90, 60, 80, 95].map((h, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${h}%` }}
-                        transition={{ duration: 1, delay: 0.8 + (i * 0.1) }}
-                        className="w-full bg-brand-text rounded-t-md opacity-80"
-                      ></motion.div>
-                    ))}
+                <div className="flex gap-8 h-full">
+                  <div className="w-1/4 space-y-4">
+                    <div className="w-full h-12 bg-brand-bg rounded-lg relative overflow-hidden">
+                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-[shimmer_2s_infinite]"></div>
+                    </div>
+                    <div className="w-full h-8 bg-gray-50 rounded-lg"></div>
+                    <div className="w-full h-8 bg-gray-50 rounded-lg"></div>
+                  </div>
+                  <div className="flex-1 bg-brand-surface rounded-xl p-6 border border-gray-100 relative overflow-hidden flex flex-col justify-end">
+                    {/* Live Chart Bars */}
+                    <div className="flex items-end justify-between h-32 gap-4 px-4 pb-4">
+                      {[40, 70, 50, 90, 60, 80, 95].map((h, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ height: "10%" }}
+                          animate={{ 
+                            height: [`${h}%`, `${h - 15}%`, `${h + 10}%`, `${h}%`] 
+                          }}
+                          transition={{ 
+                            duration: 3 + Math.random(), 
+                            repeat: Infinity, 
+                            ease: "easeInOut",
+                            delay: i * 0.1 
+                          }}
+                          className="w-full bg-brand-text rounded-t-md opacity-80"
+                        ></motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Decorative blobs */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl group-hover:bg-brand-primary/30 transition-colors duration-500 pointer-events-none"></div>
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-secondary/30 rounded-full blur-3xl group-hover:bg-brand-secondary/40 transition-colors duration-500 pointer-events-none"></div>
+              {/* Decorative blobs */}
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl group-hover:bg-brand-primary/30 transition-colors duration-500 pointer-events-none"></div>
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-secondary/30 rounded-full blur-3xl group-hover:bg-brand-secondary/40 transition-colors duration-500 pointer-events-none"></div>
+            </motion.div>
           </motion.div>
         </FadeIn>
       </div>

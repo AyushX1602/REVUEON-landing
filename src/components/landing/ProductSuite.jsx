@@ -1,10 +1,63 @@
 import React, { useRef } from 'react';
 import { Brain, BarChart, TrendingUp, Target, ArrowUpRight, Shield, Globe, Zap } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollRevealText from './ScrollRevealText';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ProductSuite = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
+  const barRef = useRef(null);
+  const textRef = useRef(null);
+
+  useGSAP(() => {
+    // 1. Animate Sentiment Bar & Text with Scrub
+    // Use a proxy object to ensure perfect sync between width and number
+    const proxy = { value: 0 };
+
+    gsap.to(proxy, {
+      value: 85,
+      ease: "none",
+      scrollTrigger: {
+        trigger: barRef.current,
+        start: "top 90%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      onUpdate: () => {
+        const currentVal = Math.round(proxy.value);
+        // Update Bar Width
+        if (barRef.current) {
+          barRef.current.style.width = `${proxy.value}%`;
+        }
+        // Update Text
+        if (textRef.current) {
+          textRef.current.textContent = `Positive (${currentVal}%)`;
+        }
+      }
+    });
+
+    // 2. Stagger Cards
+    gsap.fromTo(cardsRef.current,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardsRef.current[0],
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+  }, { scope: containerRef });
 
   const products = [
     {
@@ -105,10 +158,10 @@ const ProductSuite = () => {
                                 <div className="bg-white/5 rounded-lg p-4 border border-white/5">
                                     <div className="flex justify-between mb-2">
                                         <span className="text-sm text-gray-400">Overall Sentiment</span>
-                                        <span className="text-sm text-[#E3F221] font-bold">Positive (85%)</span>
+                                        <span ref={textRef} className="text-sm text-[#E3F221] font-bold">Positive (0%)</span>
                                     </div>
                                     <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-[#E3F221] w-[85%]"></div>
+                                        <div ref={barRef} className="h-full bg-[#E3F221] w-[0%]"></div>
                                     </div>
                                 </div>
 
