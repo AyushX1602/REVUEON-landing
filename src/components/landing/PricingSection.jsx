@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap, Building2, Rocket, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TextReveal from './TextReveal';
+import TiltCard from './TiltCard';
+import AnimatedCounter from './AnimatedCounter';
+import GlowEffect from './GlowEffect';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -10,7 +19,7 @@ const PricingSection = () => {
     {
       name: "Starter",
       description: "Perfect for small stores just getting started",
-      price: isAnnual ? 29 : 39,
+      price: isAnnual ? 20 : 29,
       period: "/month",
       savings: isAnnual ? "Save $120/year" : null,
       icon: <Zap className="w-6 h-6" />,
@@ -86,28 +95,20 @@ const PricingSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 bg-[#E3F221]/20 text-[#47423D] text-sm font-medium rounded-full mb-4"
+            className="inline-block px-4 py-1.5 bg-[#E3F221]/20 text-[#47423D] text-sm font-medium font-sans rounded-full mb-4"
           >
             Simple Pricing
           </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-[#47423D] mb-4"
-          >
-            Plans that scale with you
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
-          >
-            Start free, upgrade when you're ready. No hidden fees.
-          </motion.p>
+          <TextReveal animation="fadeUp" duration={0.6}>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#47423D] font-heading mb-4">
+              Plans that scale with you
+            </h2>
+          </TextReveal>
+          <TextReveal animation="blur" delay={0.3}>
+            <p className="text-xl font-sans text-gray-600 max-w-2xl mx-auto">
+              Start free, upgrade when you're ready. No hidden fees.
+            </p>
+          </TextReveal>
 
           {/* Billing Toggle */}
           <motion.div 
@@ -133,18 +134,23 @@ const PricingSection = () => {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <motion.div
+            <TiltCard 
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative rounded-2xl p-8 ${
-                plan.popular 
-                  ? 'bg-[#1A1A1A] text-white shadow-2xl scale-105 border-2 border-[#E3F221]' 
-                  : 'bg-white text-[#47423D] shadow-xl border border-gray-100'
-              }`}
+              tiltAmount={plan.popular ? 6 : 10}
+              scaleOnHover={plan.popular ? 1.01 : 1.03}
+              className="h-full"
             >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative rounded-2xl p-8 h-full ${
+                  plan.popular 
+                    ? 'bg-[#1A1A1A] text-white shadow-2xl border-2 border-[#E3F221]' 
+                    : 'bg-white text-[#47423D] shadow-xl border border-gray-100'
+                }`}
+              >
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#E3F221] text-[#1A1A1A] text-sm font-bold rounded-full">
@@ -200,7 +206,8 @@ const PricingSection = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+              </motion.div>
+            </TiltCard>
           ))}
         </div>
 

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-const MagneticButton = ({ children, className = "", onClick }) => {
+const MagneticButton = ({ children, className = "", onClick, strength = 0.3 }) => {
   const buttonRef = useRef(null);
   const textRef = useRef(null);
 
@@ -17,16 +17,17 @@ const MagneticButton = ({ children, className = "", onClick }) => {
       const y = clientY - (top + height / 2);
 
       gsap.to(button, {
-        x: x * 0.3,
-        y: y * 0.3,
-        duration: 0.3,
+        x: x * strength,
+        y: y * strength,
+        rotation: x * 0.02,
+        duration: 0.4,
         ease: "power2.out"
       });
 
       gsap.to(text, {
-        x: x * 0.1,
-        y: y * 0.1,
-        duration: 0.3,
+        x: x * (strength * 0.5),
+        y: y * (strength * 0.5),
+        duration: 0.4,
         ease: "power2.out"
       });
     };
@@ -35,7 +36,8 @@ const MagneticButton = ({ children, className = "", onClick }) => {
       gsap.to([button, text], {
         x: 0,
         y: 0,
-        duration: 0.5,
+        rotation: 0,
+        duration: 0.7,
         ease: "elastic.out(1, 0.3)"
       });
     };
@@ -53,7 +55,7 @@ const MagneticButton = ({ children, className = "", onClick }) => {
     <div
       ref={buttonRef}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full transition-transform cursor-pointer ${className}`}
+      className={`relative inline-flex items-center justify-center overflow-visible rounded-full transition-transform cursor-pointer ${className}`}
     >
       <span ref={textRef} className="relative z-10 block">
         {children}

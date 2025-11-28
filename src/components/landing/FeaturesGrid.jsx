@@ -4,7 +4,8 @@ import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ScrollRevealText from './ScrollRevealText';
+import TextReveal from './TextReveal';
+import TiltCard from './TiltCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -131,12 +132,11 @@ const FeaturesGrid = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12 text-center">
-          <ScrollRevealText>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#111] font-heading mb-4">
-              Everything you need to <br />
-              <span className="text-[#5B5F97]">Scale Faster</span>
+          <TextReveal animation="fadeUp" duration={0.7}>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#47423D] font-heading mb-4">
+              Everything you need to <span className="text-[#5B5F97]">Scale Faster</span>
             </h2>
-          </ScrollRevealText>
+          </TextReveal>
           
           {/* Live Review Stream - Animated Ticker */}
           <div className="my-12 max-w-2xl mx-auto">
@@ -185,20 +185,25 @@ const FeaturesGrid = () => {
             </div>
           </div>
 
-          <ScrollRevealText delay={0.1}>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <TextReveal animation="blur" delay={0.3}>
+            <p className="text-lg font-sans text-gray-500 max-w-2xl mx-auto">
               Powerful features designed for modern teams who move fast.
             </p>
-          </ScrollRevealText>
+          </TextReveal>
         </div>
 
-        {/* The Grid - Clean, No GSAP, Pure CSS */}
+        {/* The Grid with 3D Tilt Cards */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature) => (
-            <div
+            <TiltCard 
               key={feature.id}
-              className={`group relative overflow-hidden rounded-3xl p-8 ${feature.colSpan} ${feature.bgClass} shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent ${feature.borderClass}`}
+              tiltAmount={8}
+              scaleOnHover={1.02}
+              className={`${feature.colSpan}`}
             >
+              <div
+                className={`group relative overflow-hidden rounded-3xl p-8 h-full ${feature.bgClass} shadow-lg hover:shadow-2xl transition-all duration-500 border border-transparent ${feature.borderClass}`}
+              >
               {/* 3. Shimmer Effect for Enterprise Card */}
               {feature.id === 4 && (
                 <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-20 pointer-events-none" />
@@ -216,7 +221,8 @@ const FeaturesGrid = () => {
                 {/* Visual Accent */}
                 {feature.visual}
               </div>
-            </div>
+              </div>
+            </TiltCard>
           ))}
         </div>
       </div>

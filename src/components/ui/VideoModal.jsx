@@ -71,14 +71,14 @@ const VideoModal = ({ isOpen, onClose, videoUrl = "https://www.youtube.com/embed
             </div>
             
             {/* Uncomment below to use actual YouTube embed */}
-            {/* <iframe
-              src={videoUrl}
+            { <iframe
+              src={"https://youtu.be/PBcb2Wh65jU?si=7P_X7AGCWFzRn90D"}
               title="Revueon Demo"
               className="w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            /> */}
+            /> }
           </motion.div>
         </motion.div>
       )}

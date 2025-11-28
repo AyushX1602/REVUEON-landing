@@ -3,7 +3,9 @@ import { Brain, BarChart, TrendingUp, Target, ArrowUpRight, Shield, Globe, Zap }
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ScrollRevealText from './ScrollRevealText';
+import TextReveal from './TextReveal';
+import TiltCard from './TiltCard';
+import StaggerReveal from './StaggerReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -130,17 +132,17 @@ const ProductSuite = () => {
                   <div className="w-2 h-2 rounded-full bg-[#E3F221] animate-pulse" />
                   <span className="text-sm font-medium text-[#E3F221] tracking-wider uppercase">Product Suite</span>
                 </div>
-                <ScrollRevealText>
+                <TextReveal animation="fadeUp" duration={0.6}>
                     <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                        A complete ecosystem <br />
+                        A complete ecosystem <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">for exponential growth.</span>
                     </h2>
-                </ScrollRevealText>
-                <ScrollRevealText delay={0.2}>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                </TextReveal>
+                <TextReveal animation="blur" delay={0.4}>
+                    <p className="text-xl font-sans text-gray-400 max-w-2xl mx-auto">
                       Every tool you need to understand, engage, and delight your customers.
                     </p>
-                </ScrollRevealText>
+                </TextReveal>
 
                 {/* Interactive Sentiment Demo - Dark Mode */}
                 <div className="my-16 relative w-full max-w-4xl mx-auto">

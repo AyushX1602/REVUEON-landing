@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, Brain, MessageSquare, TrendingUp, ArrowRight } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -119,12 +120,16 @@ const Workflow = () => {
       <div className="h-screen flex flex-col justify-center relative z-10">
         <div className="px-4 sm:px-6 lg:px-8 mb-12 flex items-end justify-between max-w-7xl mx-auto w-full">
           <div>
-            <h2 className="text-3xl md:text-5xl font-heading font-medium text-[#E3F221] mb-4">
-              How Revueon Works
-            </h2>
-            <p className="text-white/60 text-lg max-w-xl">
-              A simple, powerful workflow designed for modern teams.
-            </p>
+            <TextReveal animation="fadeUp" duration={0.6}>
+              <h2 className="text-3xl md:text-5xl font-heading font-medium text-[#E3F221] mb-4">
+                How Revueon Works
+              </h2>
+            </TextReveal>
+            <TextReveal animation="blur" delay={0.3}>
+              <p className="font-sans text-white/60 text-lg max-w-xl">
+                A simple, powerful workflow designed for modern teams.
+              </p>
+            </TextReveal>
           </div>
           
           {/* Progress Bar */}

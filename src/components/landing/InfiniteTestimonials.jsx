@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Quote } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,12 +92,16 @@ const InfiniteTestimonials = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-20">
-        <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
-          Loved by <span className="text-[#E3F221]">Innovators</span>
-        </h2>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Join thousands of teams who are scaling faster with Revueon.
-        </p>
+        <TextReveal animation="fadeUp" duration={0.6}>
+          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+            Loved by <span className="text-[#E3F221]">Innovators</span>
+          </h2>
+        </TextReveal>
+        <TextReveal animation="blur" delay={0.4}>
+          <p className="font-sans text-gray-400 text-lg max-w-2xl mx-auto">
+            Join thousands of teams who are scaling faster with Revueon.
+          </p>
+        </TextReveal>
       </div>
 
       <div className="flex flex-col gap-8">

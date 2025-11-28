@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, CheckCircle2, Play, Star } from 'lucide-react';
 import MagneticButton from '../MagneticButton';
-import ScrollRevealText from './ScrollRevealText';
+import TextReveal from './TextReveal';
+import MouseGradient from './MouseGradient';
+import AnimatedCounter from './AnimatedCounter';
+import TextScramble from './TextScramble';
+import FloatingElements from './FloatingElements';
 import VideoModal from '../ui/VideoModal';
 import dashboardHeroImg from '../../assets/dashboard_hero.png';
 
@@ -24,7 +28,7 @@ const Hero = () => {
     tl.from(".hero-badge", { y: 30, opacity: 0, duration: 0.6 })
       .from(".hero-headline", { y: 40, opacity: 0, duration: 0.8 }, "-=0.4")
       .from(".hero-description", { y: 30, opacity: 0, duration: 0.6 }, "-=0.6")
-      .from(".hero-cta", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
+      .from(".hero-cta-wrapper", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4")
       .from(".hero-social", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
 
     // Dashboard reveal with smoother animation
@@ -76,7 +80,15 @@ const Hero = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#FAFAFA] via-white to-[#F8F7F7]">
+    <MouseGradient 
+      gradientColor="rgba(227, 242, 33, 0.12)" 
+      gradientSize={800}
+      className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#FAFAFA] via-white to-[#F8F7F7]"
+    >
+      <div ref={containerRef} className="relative">
+      {/* Floating Decorative Elements */}
+      <FloatingElements />
+      
       {/* Enhanced Background Elements with Grid */}
       <div className="absolute inset-0 -z-10">
         {/* Animated Grid */}
@@ -95,36 +107,53 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Badge */}
-          <ScrollRevealText delay={0}>
-            <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm mb-8 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E3F221] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E3F221]"></span>
-              </span>
-              <span className="text-sm font-medium text-gray-700">AI-Powered Analytics Platform</span>
-            </div>
-          </ScrollRevealText>
+          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm mb-8 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E3F221] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E3F221]"></span>
+            </span>
+            <span className="text-sm font-medium text-gray-700">AI-Powered Analytics Platform</span>
+          </div>
 
-          {/* Headline with ScrollReveal */}
-          <ScrollRevealText>
-            <h1 className="hero-headline text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight mb-6 leading-tight">
-              Turn Shopify Reviews <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
+          {/* Headline with Text Reveal Animation */}
+          <div className="mb-6">
+            <TextReveal 
+              animation="fadeUp" 
+              duration={0.8}
+              trigger={false}
+              delay={0.3}
+            >
+              <h1 className="text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight leading-tight">
+                Turn Shopify Reviews
+              </h1>
+            </TextReveal>
+            <TextReveal 
+              animation="fadeUp" 
+              duration={0.8}
+              trigger={false}
+              delay={0.6}
+            >
+              <h1 className="text-5xl lg:text-7xl font-bold font-heading tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
                 into Revenue
-              </span>
-            </h1>
-          </ScrollRevealText>
+              </h1>
+            </TextReveal>
+          </div>
 
-          <ScrollRevealText delay={0.2}>
-            <p className="hero-description text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <TextReveal 
+            animation="blur" 
+            duration={0.6}
+            trigger={false}
+            delay={1.0}
+          >
+            <p className="hero-description text-xl font-sans text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
               Stop guessing what your customers think. AI-powered sentiment analysis for modern e-commerce brands.
             </p>
-          </ScrollRevealText>
+          </TextReveal>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <MagneticButton>
-              <button className="hero-cta px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold text-lg hover:shadow-[0_0_30px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
+          <div className="hero-cta-wrapper flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <MagneticButton strength={0.3}>
+              <button className="px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold font-sans text-lg hover:shadow-[0_0_40px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-2">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -133,32 +162,40 @@ const Hero = () => {
               </button>
             </MagneticButton>
             
-            <button 
-              onClick={() => setIsVideoOpen(true)}
-              className="hero-cta px-8 py-4 bg-white text-[#47423D] rounded-full font-bold text-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group"
-            >
-              <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
-              Watch Demo
-            </button>
+            <MagneticButton strength={0.2}>
+              <button 
+                onClick={() => setIsVideoOpen(true)}
+                className="px-8 py-4 bg-white text-[#47423D] rounded-full font-bold font-sans text-lg border border-gray-200 hover:border-[#E3F221] hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group"
+              >
+                <div className="relative">
+                  <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
+                </div>
+                Watch Demo
+              </button>
+            </MagneticButton>
           </div>
 
           {/* Video Modal */}
           <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
 
-          {/* Social Proof */}
+          {/* Social Proof with Animated Counter */}
           <div className="hero-social flex items-center justify-center gap-8 text-gray-400">
             <div className="flex -space-x-3">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
               <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-              <div className="w-10 h-10 rounded-full border-2 border-white bg-[#E3F221] flex items-center justify-center text-xs font-bold text-[#1A1A1A]">+9k</div>
+              <div className="w-10 h-10 rounded-full border-2 border-white bg-[#E3F221] flex items-center justify-center text-xs font-bold text-[#1A1A1A]">
+                +<AnimatedCounter value={9} suffix="k" duration={1.5} delay={1.8} trigger={false} />
+              </div>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex text-[#E3F221]">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
-              <span className="text-sm font-medium text-[#47423D]">Loved by 10,000+ teams</span>
+              <span className="text-sm font-medium text-[#47423D]">
+                Loved by <AnimatedCounter value={10000} suffix="+" duration={2} delay={2} trigger={false} className="font-bold" /> teams
+              </span>
             </div>
           </div>
         </div>
@@ -211,7 +248,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </MouseGradient>
   );
 };
 
