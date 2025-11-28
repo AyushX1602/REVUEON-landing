@@ -100,9 +100,9 @@ const Workflow = () => {
   }, { scope: triggerRef });
 
   return (
-    <section ref={triggerRef} className="overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#111] to-[#1A1A1A] text-white relative">
+    <section ref={triggerRef} className="relative overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#111] to-[#1A1A1A] text-white isolate z-0">
       {/* Animated Grid */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 -z-10">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(rgba(227, 242, 33, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(227, 242, 33, 0.3) 1px, transparent 1px)',
           backgroundSize: '60px 60px',

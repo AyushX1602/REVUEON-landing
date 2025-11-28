@@ -34,14 +34,14 @@ const Marquee = () => {
   }, { scope: containerRef, dependencies: [] });
 
   return (
-    <section ref={containerRef} className="py-12 bg-white overflow-hidden border-b border-gray-100">
+    <section ref={containerRef} className="relative py-12 bg-white overflow-hidden border-b border-gray-100 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <p className="text-sm font-medium text-[#47423D]/60 uppercase tracking-widest">
           Trusted by industry leaders
         </p>
       </div>
       
-      <div className="relative w-full overflow-hidden mask-linear-fade">
+      <div className="relative w-full overflow-hidden">
         <div 
           ref={scrollerRef}
           className="flex w-max gap-16 items-center whitespace-nowrap"
@@ -57,8 +57,8 @@ const Marquee = () => {
         </div>
         
         {/* Gradient Masks */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none" />
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );
