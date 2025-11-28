@@ -91,9 +91,9 @@ const InfiniteTestimonials = () => {
         <div className="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-[#111] to-transparent z-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-12 md:mb-16 text-center relative z-20">
         <TextReveal animation="fadeUp" duration={0.6}>
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-4 md:mb-6">
             Loved by <span className="text-[#E3F221]">Innovators</span>
           </h2>
         </TextReveal>
@@ -110,7 +110,7 @@ const InfiniteTestimonials = () => {
           {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
             <div 
               key={i}
-              className="group relative w-[400px] bg-white/5 rounded-2xl p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
+              className="group relative w-[300px] sm:w-[350px] md:w-[400px] bg-white/5 rounded-2xl p-6 sm:p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
               onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -152,7 +152,7 @@ const InfiniteTestimonials = () => {
           {[...testimonials, ...testimonials, ...testimonials].reverse().map((t, i) => (
             <div 
               key={i}
-              className="group relative w-[400px] bg-white/5 rounded-2xl p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
+              className="group relative w-[300px] sm:w-[350px] md:w-[400px] bg-white/5 rounded-2xl p-6 sm:p-8 backdrop-blur-sm transition-colors duration-300 overflow-hidden"
               onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = e.clientX - rect.left;

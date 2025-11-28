@@ -109,16 +109,16 @@ const ProductSuite = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative z-30 py-32 bg-gradient-to-b from-[#0A0A0A] via-[#111] to-[#0A0A0A] overflow-hidden">
+    <section ref={containerRef} className="relative z-30 py-16 md:py-32 bg-gradient-to-b from-[#0A0A0A] via-[#111] to-[#0A0A0A] overflow-hidden">
         {/* Enhanced Ambient Background */}
         <div className="absolute inset-0">
           {/* Grid Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:80px_80px]" />
           
           {/* Animated Gradient Orbs */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-[#5B5F97]/20 via-[#5B5F97]/10 to-transparent rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]"></div>
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-l from-[#E3F221]/15 via-[#E3F221]/5 to-transparent rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-[#E3F221]/10 to-[#5B5F97]/10 rounded-full blur-[80px] animate-[pulse_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+          <div className="absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-gradient-to-r from-[#5B5F97]/20 via-[#5B5F97]/10 to-transparent rounded-full blur-[80px] md:blur-[120px] animate-[pulse_8s_ease-in-out_infinite]"></div>
+          <div className="absolute bottom-0 right-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-gradient-to-l from-[#E3F221]/15 via-[#E3F221]/5 to-transparent rounded-full blur-[60px] md:blur-[100px] animate-[pulse_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-gradient-to-br from-[#E3F221]/10 to-[#5B5F97]/10 rounded-full blur-[60px] md:blur-[80px] animate-[pulse_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
           
           {/* Light Rays */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-[#E3F221]/20 via-transparent to-transparent" />
@@ -133,8 +133,8 @@ const ProductSuite = () => {
                   <span className="text-sm font-medium text-[#E3F221] tracking-wider uppercase">Product Suite</span>
                 </div>
                 <TextReveal animation="fadeUp" duration={0.6}>
-                    <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                        A complete ecosystem <br className="hidden md:block" />
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-4 md:mb-6 leading-tight">
+                        A complete ecosystem <br className="hidden sm:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">for exponential growth.</span>
                     </h2>
                 </TextReveal>
@@ -145,27 +145,27 @@ const ProductSuite = () => {
                 </TextReveal>
 
                 {/* Interactive Sentiment Demo - Dark Mode */}
-                <div className="my-16 relative w-full max-w-4xl mx-auto">
+                <div className="my-8 md:my-16 relative w-full max-w-4xl mx-auto">
                     <div className="absolute -inset-1 bg-gradient-to-r from-[#E3F221] to-[#5B5F97] rounded-2xl blur opacity-20"></div>
-                    <div className="relative bg-[#1A1A1A] rounded-2xl border border-white/10 p-8 shadow-2xl overflow-hidden">
+                    <div className="relative bg-[#1A1A1A] rounded-2xl border border-white/10 p-4 sm:p-6 md:p-8 shadow-2xl overflow-hidden">
                         {/* Header */}
-                        <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 border-b border-white/5 pb-4 gap-3 sm:gap-0">
                             <div className="flex items-center gap-3">
                                 <div className="flex gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
                                 </div>
-                                <span className="text-sm text-gray-400 font-mono">sentiment_analysis_v2.py</span>
+                                <span className="text-xs sm:text-sm text-gray-400 font-mono truncate">sentiment_analysis_v2.py</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                <span className="text-xs text-[#E3F221] font-mono">AI ACTIVE</span>
+                                <span className="text-[10px] sm:text-xs text-[#E3F221] font-mono">AI ACTIVE</span>
                             </div>
                         </div>
 
                         {/* Content */}
-                        <div className="grid md:grid-cols-2 gap-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
                             {/* Input Side */}
                             <div className="group">
                                 <div className="text-xs text-gray-500 mb-3 font-mono uppercase tracking-wider flex items-center gap-2">

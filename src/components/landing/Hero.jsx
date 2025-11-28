@@ -123,7 +123,7 @@ const Hero = () => {
               trigger={false}
               delay={0.3}
             >
-              <h1 className="text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight leading-tight">
                 Turn Shopify Reviews
               </h1>
             </TextReveal>
@@ -133,7 +133,7 @@ const Hero = () => {
               trigger={false}
               delay={0.6}
             >
-              <h1 className="text-5xl lg:text-7xl font-bold font-heading tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
                 into Revenue
               </h1>
             </TextReveal>
@@ -145,15 +145,15 @@ const Hero = () => {
             trigger={false}
             delay={1.0}
           >
-            <p className="hero-description text-xl font-sans text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="hero-description text-lg sm:text-xl font-sans text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               Stop guessing what your customers think. AI-powered sentiment analysis for modern e-commerce brands.
             </p>
           </TextReveal>
 
           {/* CTA Buttons */}
-          <div className="hero-cta-wrapper flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="hero-cta-wrapper flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4 sm:px-0">
             <MagneticButton strength={0.3}>
-              <button className="px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold font-sans text-lg hover:shadow-[0_0_40px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold font-sans text-base sm:text-lg hover:shadow-[0_0_40px_-5px_#E3F221] transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-2">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -165,7 +165,7 @@ const Hero = () => {
             <MagneticButton strength={0.2}>
               <button 
                 onClick={() => setIsVideoOpen(true)}
-                className="px-8 py-4 bg-white text-[#47423D] rounded-full font-bold font-sans text-lg border border-gray-200 hover:border-[#E3F221] hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#47423D] rounded-full font-bold font-sans text-base sm:text-lg border border-gray-200 hover:border-[#E3F221] hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 <div className="relative">
                   <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
@@ -179,13 +179,13 @@ const Hero = () => {
           <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
 
           {/* Social Proof with Animated Counter */}
-          <div className="hero-social flex items-center justify-center gap-8 text-gray-400">
+          <div className="hero-social flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-400 px-4 sm:px-0">
             <div className="flex -space-x-3">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-              <div className="w-10 h-10 rounded-full border-2 border-white bg-[#E3F221] flex items-center justify-center text-xs font-bold text-[#1A1A1A]">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="User" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="User" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="User" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="User" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white object-cover" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white bg-[#E3F221] flex items-center justify-center text-xs font-bold text-[#1A1A1A]">
                 +<AnimatedCounter value={9} suffix="k" duration={1.5} delay={1.8} trigger={false} />
               </div>
             </div>
@@ -193,7 +193,7 @@ const Hero = () => {
               <div className="flex text-[#E3F221]">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
-              <span className="text-sm font-medium text-[#47423D]">
+              <span className="text-xs sm:text-sm font-medium text-[#47423D]">
                 Loved by <AnimatedCounter value={10000} suffix="+" duration={2} delay={2} trigger={false} className="font-bold" /> teams
               </span>
             </div>

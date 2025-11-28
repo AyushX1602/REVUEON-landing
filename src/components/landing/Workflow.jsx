@@ -118,10 +118,10 @@ const Workflow = () => {
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <div className="h-screen flex flex-col justify-center relative z-10">
-        <div className="px-4 sm:px-6 lg:px-8 mb-12 flex items-end justify-between max-w-7xl mx-auto w-full">
+        <div className="px-4 sm:px-6 lg:px-8 mb-8 md:mb-12 flex flex-col md:flex-row items-start md:items-end justify-between max-w-7xl mx-auto w-full gap-6 md:gap-0">
           <div>
             <TextReveal animation="fadeUp" duration={0.6}>
-              <h2 className="text-3xl md:text-5xl font-heading font-medium text-[#E3F221] mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-medium text-[#E3F221] mb-2 md:mb-4">
                 How Revueon Works
               </h2>
             </TextReveal>

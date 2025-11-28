@@ -117,10 +117,10 @@ const FeaturesGrid = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative py-20 px-6 pb-0 bg-gradient-to-b from-[#F8F7F7] via-white to-[#F8F7F7] overflow-hidden isolate z-10">
+    <section ref={containerRef} className="relative py-12 md:py-20 px-4 sm:px-6 pb-0 bg-gradient-to-b from-[#F8F7F7] via-white to-[#F8F7F7] overflow-hidden isolate z-10">
       {/* Subtle gradient orbs */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#E3F221] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse -z-10" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#5B5F97] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse -z-10" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 left-0 w-48 md:w-96 h-48 md:h-96 bg-[#E3F221] rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl opacity-5 animate-pulse -z-10" />
+      <div className="absolute bottom-1/4 right-0 w-48 md:w-96 h-48 md:h-96 bg-[#5B5F97] rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl opacity-5 animate-pulse -z-10" style={{ animationDelay: '2s' }} />
       
       {/* 1. Dot Pattern Background for Texture */}
       <div className="absolute inset-0 opacity-[0.4] -z-10" 
@@ -133,7 +133,7 @@ const FeaturesGrid = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12 text-center">
           <TextReveal animation="fadeUp" duration={0.7}>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#47423D] font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#47423D] font-heading mb-4">
               Everything you need to <span className="text-[#5B5F97]">Scale Faster</span>
             </h2>
           </TextReveal>

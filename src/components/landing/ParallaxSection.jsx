@@ -70,34 +70,34 @@ const ParallaxSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-[120vh] overflow-hidden flex flex-col items-center justify-center bg-[#111] py-20">
+    <section ref={containerRef} className="relative min-h-screen lg:min-h-[120vh] overflow-hidden flex flex-col items-center justify-center bg-[#111] py-16 sm:py-20">
       
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div ref={bgOrbRef} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#E3F221] rounded-full blur-[120px] opacity-20" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#5B5F97] rounded-full blur-[100px] opacity-20" />
+        <div ref={bgOrbRef} className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#E3F221] rounded-full blur-[80px] sm:blur-[120px] opacity-20" />
+        <div className="absolute bottom-1/4 right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#5B5F97] rounded-full blur-[60px] sm:blur-[100px] opacity-20" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
       </div>
 
       {/* Content Header */}
-      <div className="relative z-10 text-center mb-20 max-w-4xl px-6">
+      <div className="relative z-10 text-center mb-12 sm:mb-20 max-w-4xl px-4 sm:px-6">
         <ScrollRevealText>
-          <h2 className="text-5xl md:text-7xl font-bold text-white font-heading leading-tight mb-6">
-            Orchestrate Your <br />
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white font-heading leading-tight mb-4 sm:mb-6">
+            Orchestrate Your <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] to-white">
               Entire Workflow
             </span>
           </h2>
         </ScrollRevealText>
         <ScrollRevealText delay={0.2}>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto">
             Experience the power of a unified platform. Connect every data point, automate every insight, and scale without limits.
           </p>
         </ScrollRevealText>
       </div>
 
-      {/* Floating Cards Container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto h-[600px] perspective-1000">
+      {/* Floating Cards Container - Hide complex parallax on mobile */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto h-[400px] sm:h-[600px] perspective-1000 hidden md:block">
         
         {/* Card 1: Analytics (Left) */}
         <div 
@@ -163,6 +163,38 @@ const ParallaxSection = () => {
           </div>
         </div>
 
+      </div>
+
+      {/* Mobile-friendly cards - shown only on mobile */}
+      <div className="relative z-10 w-full max-w-lg mx-auto px-4 md:hidden space-y-4">
+        {/* Analytics Card */}
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-xl">
+          <div className="flex items-center justify-between">
+            <div className="w-10 h-10 rounded-full bg-[#E3F221]/20 flex items-center justify-center text-[#E3F221]">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-white">+127%</div>
+              <div className="text-xs text-gray-400">Revenue Growth</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Users Card */}
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-xl">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#5B5F97] flex items-center justify-center text-white">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              </div>
+              <div className="text-white font-medium">Active Users</div>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-white">14.2k</div>
+              <div className="text-xs text-[#E3F221]">+12% this week</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
