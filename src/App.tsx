@@ -16,11 +16,11 @@ import SEOHead from './components/shared/SEOHead';
 import PageLoader from './components/PageLoader';
 import ErrorBoundary from './components/shared/ErrorBoundary';
 import PerformanceMonitor from './components/shared/PerformanceMonitor';
+import LandingPage from './components/landing/LandingPage';
 
-// Lazy load heavy components
+// Lazy load only auth pages (less critical)
 const Login = lazy(() => import('./components/Login'));
 const Signup = lazy(() => import('./components/Signup'));
-const LandingPage = lazy(() => import('./components/landing/LandingPage'));
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -87,7 +87,7 @@ function AppContent() {
       <div className="min-h-screen bg-white">
         <SEOHead />
         {showIntro && <KineticIntro onComplete={() => setShowIntro(false)} />}
-        {!isDashboard && <Navbar />}
+        {!isDashboard && !showIntro && <Navbar />}
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<LandingPage />} />

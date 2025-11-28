@@ -16,16 +16,22 @@ const Hero = () => {
   const badge2Ref = useRef(null);
 
   useGSAP(() => {
-    // Initial Reveal Animation
-    const tl = gsap.timeline();
+    // Smooth entrance animations
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    tl.from(".hero-badge", { y: 30, opacity: 0, duration: 0.6 })
+      .from(".hero-headline", { y: 40, opacity: 0, duration: 0.8 }, "-=0.4")
+      .from(".hero-description", { y: 30, opacity: 0, duration: 0.6 }, "-=0.6")
+      .from(".hero-cta", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
+      .from(".hero-social", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
 
+    // Dashboard reveal with smoother animation
     tl.from(dashboardRef.current, {
-      y: 100,
+      y: 60,
       opacity: 0,
-      duration: 1.5,
-      ease: "power4.out",
-      delay: 0.5
-    });
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.5");
 
     // Floating Badges Animation
     gsap.to(badge1Ref.current, {
@@ -88,7 +94,7 @@ const Hero = () => {
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Badge */}
           <ScrollRevealText delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm mb-8 backdrop-blur-sm">
+            <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm mb-8 backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E3F221] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E3F221]"></span>
@@ -99,7 +105,7 @@ const Hero = () => {
 
           {/* Headline with ScrollReveal */}
           <ScrollRevealText>
-            <h1 className="text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight mb-6 leading-tight">
+            <h1 className="hero-headline text-5xl lg:text-7xl font-bold text-[#47423D] font-heading tracking-tight mb-6 leading-tight">
               Turn Shopify Reviews <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E3F221] via-[#5B5F97] to-[#E3F221] bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
                 into Revenue
@@ -108,15 +114,15 @@ const Hero = () => {
           </ScrollRevealText>
 
           <ScrollRevealText delay={0.2}>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="hero-description text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
               Stop guessing what your customers think. AI-powered sentiment analysis for modern e-commerce brands.
             </p>
           </ScrollRevealText>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up delay-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <MagneticButton>
-              <button className="px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold text-lg hover:shadow-[0_0_30px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
+              <button className="hero-cta px-8 py-4 bg-[#E3F221] text-[#47423D] rounded-full font-bold text-lg hover:shadow-[0_0_30px_-5px_#E3F221] transition-all duration-300 flex items-center gap-2 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-2">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -125,14 +131,14 @@ const Hero = () => {
               </button>
             </MagneticButton>
             
-            <button className="px-8 py-4 bg-white text-[#47423D] rounded-full font-bold text-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group">
+            <button className="hero-cta px-8 py-4 bg-white text-[#47423D] rounded-full font-bold text-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group">
               <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               Watch Demo
             </button>
           </div>
 
           {/* Social Proof */}
-          <div className="flex items-center justify-center gap-8 text-gray-400 animate-fade-in-up delay-400">
+          <div className="hero-social flex items-center justify-center gap-8 text-gray-400">
             <div className="flex -space-x-4">
               <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />
               <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />

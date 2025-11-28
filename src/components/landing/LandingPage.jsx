@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
 import Hero from './Hero';
 import FeaturesGrid from './FeaturesGrid';
 import Workflow from './Workflow';
@@ -12,7 +11,6 @@ import ParallaxSection from './ParallaxSection';
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-[#F8F7F7] overflow-x-hidden">
-      <Navbar />
       <Hero />
       <Marquee />
       <FeaturesGrid />

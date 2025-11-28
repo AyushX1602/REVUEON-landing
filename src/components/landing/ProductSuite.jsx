@@ -14,6 +14,9 @@ const ProductSuite = () => {
   const textRef = useRef(null);
 
   useGSAP(() => {
+    // Ensure refs are mounted before animation
+    if (!barRef.current || !textRef.current) return;
+
     // 1. Animate Sentiment Bar & Text with Scrub
     // Use a proxy object to ensure perfect sync between width and number
     const proxy = { value: 0 };
@@ -26,6 +29,7 @@ const ProductSuite = () => {
         start: "top 90%",
         end: "bottom 60%",
         scrub: 1,
+        invalidateOnRefresh: true,
       },
       onUpdate: () => {
         const currentVal = Math.round(proxy.value);

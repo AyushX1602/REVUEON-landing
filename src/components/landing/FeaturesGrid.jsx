@@ -14,18 +14,19 @@ const FeaturesGrid = () => {
 
   useGSAP(() => {
     const cards = gridRef.current.children;
+    // Smooth staggered fade-in animation
     gsap.fromTo(cards,
-      { y: 50, opacity: 0 },
+      { y: 40, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
+        stagger: 0.15,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: gridRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
+          start: "top 85%",
+          once: true
         }
       }
     );
@@ -115,7 +116,7 @@ const FeaturesGrid = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative py-20 px-6 bg-gradient-to-b from-[#F8F7F7] via-white to-[#F8F7F7] overflow-hidden isolate z-10">
+    <section ref={containerRef} className="relative py-20 px-6 pb-0 bg-gradient-to-b from-[#F8F7F7] via-white to-[#F8F7F7] overflow-hidden isolate z-10">
       {/* Subtle gradient orbs */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#E3F221] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#5B5F97] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse -z-10" style={{ animationDelay: '2s' }} />
@@ -125,8 +126,8 @@ const FeaturesGrid = () => {
            style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
       </div>
 
-      {/* 2. Gradient Transition to Dark Mode (ProductSuite) */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#111] pointer-events-none -z-10"></div>
+      {/* 2. Extended Gradient Transition to Dark Mode */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A] pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12 text-center">

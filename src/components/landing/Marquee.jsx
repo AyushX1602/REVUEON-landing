@@ -10,28 +10,27 @@ const Marquee = () => {
     "Acme Corp", "GlobalTech", "Nebula", "Vertex", "Horizon", "Pinnacle", "Apex", "Zenith", "Summit", "Vanguard"
   ];
 
+  // Double the logos for seamless infinite scroll
+  const allLogos = [...logos, ...logos];
+
   useGSAP(() => {
     if (!scrollerRef.current) return;
-    
-    const scrollerContent = Array.from(scrollerRef.current.children);
-    
-    // Clone items for infinite scroll
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerRef.current.appendChild(duplicatedItem);
-    });
 
-    // Start animation immediately with no delay
-    gsap.set(scrollerRef.current, { x: 0 });
+    // Smooth fade-in entrance
+    gsap.fromTo(scrollerRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+    );
+
+    // Start scrolling animation
     gsap.to(scrollerRef.current, {
       x: "-50%",
-      duration: 30,
+      duration: 40,
       ease: "none",
       repeat: -1,
-      immediateRender: true,
+      delay: 0.3
     });
-  }, { scope: containerRef, dependencies: [] });
+  }, { scope: containerRef });
 
   return (
     <section ref={containerRef} className="relative py-12 bg-white overflow-hidden border-b border-gray-100 z-10">
@@ -46,7 +45,7 @@ const Marquee = () => {
           ref={scrollerRef}
           className="flex w-max gap-16 items-center whitespace-nowrap"
         >
-          {logos.map((logo, idx) => (
+          {allLogos.map((logo, idx) => (
             <div 
               key={idx} 
               className="text-2xl font-heading font-bold text-[#47423D]/30 hover:text-[#47423D] transition-colors duration-300 cursor-default"
