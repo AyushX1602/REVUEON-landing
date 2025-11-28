@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, CheckCircle2, Play, Star } from 'lucide-react';
 import MagneticButton from '../MagneticButton';
 import ScrollRevealText from './ScrollRevealText';
+import dashboardHeroImg from '../../assets/dashboard_hero.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,7 +157,7 @@ const Hero = () => {
           >
             <div className="rounded-md bg-white overflow-hidden">
               <img 
-                src="/src/assets/dashboard_hero.png" 
+                src={dashboardHeroImg} 
                 alt="Dashboard Preview" 
                 className="w-full h-auto object-cover rounded-md"
               />
