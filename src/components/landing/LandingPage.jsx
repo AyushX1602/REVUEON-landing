@@ -5,6 +5,7 @@ import Workflow from './Workflow';
 import Marquee from './Marquee';
 import ProductSuite from './ProductSuite';
 import InfiniteTestimonials from './InfiniteTestimonials';
+import PricingSection from './PricingSection';
 import Footer from './Footer';
 import ParallaxSection from './ParallaxSection';
 
@@ -17,6 +18,7 @@ const LandingPage = () => {
       <Workflow />
       <ParallaxSection />
       <ProductSuite />
+      <PricingSection />
       <InfiniteTestimonials />
       <Footer />
     </div>

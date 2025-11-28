@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, CheckCircle2, Play, Star } from 'lucide-react';
 import MagneticButton from '../MagneticButton';
 import ScrollRevealText from './ScrollRevealText';
+import VideoModal from '../ui/VideoModal';
 import dashboardHeroImg from '../../assets/dashboard_hero.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ const Hero = () => {
   const containerRef = useRef(null);
   const dashboardRef = useRef(null);
   const badge1Ref = useRef(null);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const badge2Ref = useRef(null);
 
   useGSAP(() => {
@@ -131,25 +133,32 @@ const Hero = () => {
               </button>
             </MagneticButton>
             
-            <button className="hero-cta px-8 py-4 bg-white text-[#47423D] rounded-full font-bold text-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group">
+            <button 
+              onClick={() => setIsVideoOpen(true)}
+              className="hero-cta px-8 py-4 bg-white text-[#47423D] rounded-full font-bold text-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 group"
+            >
               <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               Watch Demo
             </button>
           </div>
 
+          {/* Video Modal */}
+          <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
+
           {/* Social Proof */}
           <div className="hero-social flex items-center justify-center gap-8 text-gray-400">
-            <div className="flex -space-x-4">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />
-              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />
-              <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-white" />
+            <div className="flex -space-x-3">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="User" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
+              <div className="w-10 h-10 rounded-full border-2 border-white bg-[#E3F221] flex items-center justify-center text-xs font-bold text-[#1A1A1A]">+9k</div>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex text-[#E3F221]">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
-              <span className="text-sm font-medium">Loved by 10,000+ teams</span>
+              <span className="text-sm font-medium text-[#47423D]">Loved by 10,000+ teams</span>
             </div>
           </div>
         </div>

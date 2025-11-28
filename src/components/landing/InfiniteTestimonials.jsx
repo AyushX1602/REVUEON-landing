@@ -10,38 +10,50 @@ const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "VP of Sales, TechFlow",
+    company: "TechFlow",
     quote: "Revueon completely transformed how we handle customer feedback. The AI insights are scary good.",
-    image: "https://randomuser.me/api/portraits/women/1.jpg"
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   },
   {
     name: "Michael Chen",
     role: "Founder, StartScale",
+    company: "StartScale",
     quote: "I've never seen a tool that makes sentiment analysis this easy. It's like having a data scientist on the team.",
-    image: "https://randomuser.me/api/portraits/men/2.jpg"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   },
   {
     name: "Jessica Wu",
     role: "Product Lead, Nexus",
+    company: "Nexus",
     quote: "The ROI was immediate. We cut our response time by 80% in the first week.",
-    image: "https://randomuser.me/api/portraits/women/3.jpg"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   },
   {
     name: "David Miller",
     role: "COO, SwiftLogistics",
+    company: "SwiftLogistics",
     quote: "Finally, a dashboard that my entire executive team actually understands and uses.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg"
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   },
   {
     name: "Emily Davis",
     role: "Head of CX, BrightPath",
+    company: "BrightPath",
     quote: "The automated workflows are a game changer. We're catching issues before they become problems.",
-    image: "https://randomuser.me/api/portraits/women/5.jpg"
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   },
   {
     name: "James Wilson",
     role: "Director, FutureCorp",
+    company: "FutureCorp",
     quote: "Simply the best analytics platform on the market. The design is beautiful and the data is actionable.",
-    image: "https://randomuser.me/api/portraits/men/6.jpg"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    rating: 5
   }
 ];
 
