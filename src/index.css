@@ -4,6 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* NProgress Custom Styling */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: linear-gradient(to right, #E3F221, #5B5F97);
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #E3F221, 0 0 5px #E3F221;
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
 @layer utilities {
   @keyframes shimmer {
     100% {
@@ -15,7 +41,6 @@
     0% {
       transform: translateY(0);
     }
-
     100% {
       transform: translateY(-50%);
     }
@@ -25,17 +50,85 @@
     0% {
       background-position: 0% 50%;
     }
-
     100% {
       background-position: 200% 50%;
     }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(227, 242, 33, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(227, 242, 33, 0.8), 0 0 60px rgba(227, 242, 33, 0.4);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes borderGlow {
+    0%, 100% {
+      border-color: rgba(227, 242, 33, 0.3);
+    }
+    50% {
+      border-color: rgba(227, 242, 33, 0.8);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s ease-out;
+  }
+
+  .animate-border-glow {
+    animation: borderGlow 2s ease-in-out infinite;
   }
 }
 
 @layer base {
   :root {
-    --background: 40 8% 95%;
-    /* #F3F2F0 - Warm Beige */
+    --background: 0 0% 100%;
+    /* #FFFFFF - White */
     --foreground: 30 8% 26%;
     /* #47423D - Dark Brown/Grey */
     --card: 0 0% 100%;
@@ -134,6 +227,8 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    /* Fix right shift */
   }
 
   /* Premium Grain Texture */

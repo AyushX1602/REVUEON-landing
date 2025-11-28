@@ -137,3 +137,5 @@ export function ErrorState({
     </motion.div>
   );
 }
+
+export default ErrorBoundary;

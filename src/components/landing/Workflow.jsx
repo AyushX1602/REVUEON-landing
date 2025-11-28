@@ -100,7 +100,19 @@ const Workflow = () => {
   }, { scope: triggerRef });
 
   return (
-    <section ref={triggerRef} className="overflow-hidden bg-[#111] text-white relative">
+    <section ref={triggerRef} className="overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#111] to-[#1A1A1A] text-white relative">
+      {/* Animated Grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(rgba(227, 242, 33, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(227, 242, 33, 0.3) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+          animation: 'float 15s ease-in-out infinite'
+        }} />
+      </div>
+      
+      {/* Gradient Accent */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E3F221] to-transparent opacity-50" />
+      
       {/* Background Noise */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 

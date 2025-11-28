@@ -115,7 +115,11 @@ const FeaturesGrid = () => {
   ];
 
   return (
-    <section ref={containerRef} className="py-20 px-6 bg-[#F8F7F7] relative overflow-hidden">
+    <section ref={containerRef} className="py-20 px-6 bg-gradient-to-b from-[#F8F7F7] via-white to-[#F8F7F7] relative overflow-hidden">
+      {/* Subtle gradient orbs */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#E3F221] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#5B5F97] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" style={{ animationDelay: '2s' }} />
+      
       {/* 1. Dot Pattern Background for Texture */}
       <div className="absolute inset-0 opacity-[0.4]" 
            style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>

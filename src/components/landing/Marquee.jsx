@@ -11,6 +11,8 @@ const Marquee = () => {
   ];
 
   useGSAP(() => {
+    if (!scrollerRef.current) return;
+    
     const scrollerContent = Array.from(scrollerRef.current.children);
     
     // Clone items for infinite scroll
@@ -20,13 +22,16 @@ const Marquee = () => {
       scrollerRef.current.appendChild(duplicatedItem);
     });
 
+    // Start animation immediately with no delay
+    gsap.set(scrollerRef.current, { x: 0 });
     gsap.to(scrollerRef.current, {
       x: "-50%",
-      duration: 20,
-      ease: "linear",
+      duration: 30,
+      ease: "none",
       repeat: -1,
+      immediateRender: true,
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [] });
 
   return (
     <section ref={containerRef} className="py-12 bg-white overflow-hidden border-b border-gray-100">

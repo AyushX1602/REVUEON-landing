@@ -1,16 +1,157 @@
-# React + Vite
+# 🚀 Revueon - AI-Powered Shopify Review Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Revueon Banner](./dashboard_hero_preview.png)
 
-Currently, two official plugins are available:
+<div align="center">
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Turn Shopify Reviews into Revenue with AI-Powered Sentiment Analysis**
 
-## React Compiler
+[![React](https://img.shields.io/badge/React-18.3-blue)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-purple)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38bdf8)](https://tailwindcss.com/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+### 🎨 Premium User Experience
+- **Smooth Scrolling** - Lenis-powered butter-smooth scroll
+- **Advanced Animations** - GSAP ScrollTrigger & Framer Motion
+- **Magnetic Buttons** - Interactive cursor-following elements
+- **Responsive Navbar** - Instant morphing with scroll detection
+- **Loading States** - NProgress integration for navigation
+
+### ⚡ Performance & Optimization
+- **Code Splitting** - Lazy loading for optimal bundles
+- **Image Optimization** - Lazy-loaded with blur effects
+- **SEO Ready** - Dynamic meta tags with React Helmet
+- **Error Boundaries** - Graceful error handling
+- **PWA Support** - Progressive Web App ready
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 18.3** + **TypeScript 5.6**
+- **Vite 6.0** - Lightning-fast build tool
+- **Tailwind CSS 3.4** - Utility-first styling
+- **GSAP 3.12** - Professional animations
+- **Framer Motion 11** - React animations
+- **React Hook Form** + **Zod** - Form validation
+- **Radix UI** - Accessible components
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone repository
+git clone https://github.com/AyushX1602/REVUEON-landing.git
+
+# Install dependencies
+cd REVUEON-landing && npm install
+
+# Copy environment variables
+cp .env.example .env
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+---
+
+## 📦 Environment Variables
+
+Create a `.env` file (use `.env.example` as template):
+
+```env
+VITE_API_BASE_URL=http://localhost:3000
+VITE_ENABLE_ANALYTICS=false
+VITE_ENV=development
+```
+
+---
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/
+│   ├── landing/        # Landing page sections
+│   ├── shared/         # Reusable components
+│   └── ui/             # UI primitives (Radix)
+├── services/           # API integration layer
+├── hooks/              # Custom React hooks
+└── contexts/           # React contexts
+```
+
+---
+
+## 🎯 Key Features
+
+### Smart Navbar
+- Morphs from full-width to compact pill on scroll
+- Theme switches (transparent → black)
+- Logo animation (full brand → icon only)
+
+### Form Validation
+- React Hook Form + Zod schemas
+- Real-time validation
+- Password visibility toggle
+- Loading states
+
+### API Service Layer
+Ready-to-use API client in `src/services/api.js`:
+
+```javascript
+import { authAPI } from '@/services/api';
+
+await authAPI.login(email, password);
+await authAPI.signup(userData);
+```
+
+---
+
+## 📈 Performance
+
+- ✅ Code splitting with React.lazy()
+- ✅ Image lazy loading
+- ✅ Manual chunk splitting
+- ✅ Terser minification
+- ✅ CSS purging via Tailwind
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Open Pull Request
+
+---
+
+## 📄 License
+
+MIT License - see LICENSE file
+
+---
+
+## 📞 Contact
+
+**GitHub**: [@AyushX1602](https://github.com/AyushX1602)
+
+---
+
+<div align="center">
+
+**Built with ❤️ using React, Vite, and GSAP**
+
+</div>

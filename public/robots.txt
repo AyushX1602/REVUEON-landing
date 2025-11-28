@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://revueon.com/sitemap.xml
+
+# Disallow admin paths (when implemented)
+Disallow: /dashboard/
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1

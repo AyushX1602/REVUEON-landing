@@ -1,0 +1,19 @@
+{
+  "name": "Revueon - Review Analytics",
+  "short_name": "Revueon",
+  "description": "AI-powered sentiment analysis for Shopify stores",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F7F7",
+  "theme_color": "#E3F221",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "analytics"]
+}

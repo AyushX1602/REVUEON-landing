@@ -103,21 +103,39 @@ const ProductSuite = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative z-30 py-32 bg-[#111] overflow-hidden">
-        {/* Ambient Background Orbs */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#5B5F97]/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#E3F221]/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+    <section ref={containerRef} className="relative z-30 py-32 bg-gradient-to-b from-[#0A0A0A] via-[#111] to-[#0A0A0A] overflow-hidden">
+        {/* Enhanced Ambient Background */}
+        <div className="absolute inset-0">
+          {/* Grid Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:80px_80px]" />
+          
+          {/* Animated Gradient Orbs */}
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-[#5B5F97]/20 via-[#5B5F97]/10 to-transparent rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-l from-[#E3F221]/15 via-[#E3F221]/5 to-transparent rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-[#E3F221]/10 to-[#5B5F97]/10 rounded-full blur-[80px] animate-[pulse_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+          
+          {/* Light Rays */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-[#E3F221]/20 via-transparent to-transparent" />
+          <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-[#5B5F97]/10 via-transparent to-transparent" />
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-[#5B5F97]/10 via-transparent to-transparent" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div className="mb-20">
-                <div className="text-sm font-bold text-[#E3F221] mb-4 tracking-widest uppercase">
-                    REVUEON PRODUCT SUITE
+            <div className="mb-20 text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                  <div className="w-2 h-2 rounded-full bg-[#E3F221] animate-pulse" />
+                  <span className="text-sm font-medium text-[#E3F221] tracking-wider uppercase">Product Suite</span>
                 </div>
                 <ScrollRevealText>
-                    <h2 className="text-4xl md:text-6xl font-heading font-medium text-white mb-8 leading-tight">
+                    <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 leading-tight">
                         A complete ecosystem <br />
-                        <span className="text-gray-500">for growth.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">for exponential growth.</span>
                     </h2>
+                </ScrollRevealText>
+                <ScrollRevealText delay={0.2}>
+                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                      Every tool you need to understand, engage, and delight your customers.
+                    </p>
                 </ScrollRevealText>
 
                 {/* Interactive Sentiment Demo - Dark Mode */}
@@ -143,41 +161,62 @@ const ProductSuite = () => {
                         {/* Content */}
                         <div className="grid md:grid-cols-2 gap-12">
                             {/* Input Side */}
-                            <div>
-                                <div className="text-xs text-gray-500 mb-2 font-mono uppercase">Input Review</div>
-                                <div className="text-lg text-white/90 font-serif italic leading-relaxed">
-                                    "The <span className="bg-green-500/20 text-green-400 px-1 rounded">shipping was incredibly fast</span>, but the <span className="bg-red-500/20 text-red-400 px-1 rounded">packaging was damaged</span>. However, the <span className="bg-green-500/20 text-green-400 px-1 rounded">product quality is amazing</span>!"
+                            <div className="group">
+                                <div className="text-xs text-gray-500 mb-3 font-mono uppercase tracking-wider flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-[#E3F221] animate-pulse" />
+                                  Input Review
+                                </div>
+                                <div className="relative p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group-hover:border-[#E3F221]/30">
+                                  <div className="text-base text-white/90 font-serif italic leading-relaxed">
+                                      "The <span className="bg-gradient-to-r from-green-500/30 to-green-400/20 text-green-300 px-2 py-0.5 rounded-md border border-green-500/20">shipping was incredibly fast</span>, but the <span className="bg-gradient-to-r from-red-500/30 to-red-400/20 text-red-300 px-2 py-0.5 rounded-md border border-red-500/20">packaging was damaged</span>. However, the <span className="bg-gradient-to-r from-green-500/30 to-green-400/20 text-green-300 px-2 py-0.5 rounded-md border border-green-500/20">product quality is amazing</span>!"
+                                  </div>
+                                  {/* Glow effect on hover */}
+                                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#E3F221]/0 to-[#E3F221]/0 group-hover:from-[#E3F221]/5 group-hover:to-transparent transition-all duration-500" />
                                 </div>
                             </div>
 
                             {/* Output Side */}
                             <div className="space-y-4">
-                                <div className="text-xs text-gray-500 mb-2 font-mono uppercase">Analysis Result</div>
+                                <div className="text-xs text-gray-500 mb-3 font-mono uppercase tracking-wider flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-[#5B5F97] animate-pulse" style={{animationDelay: '0.5s'}} />
+                                  Analysis Result
+                                </div>
                                 
                                 {/* Sentiment Score */}
-                                <div className="bg-white/5 rounded-lg p-4 border border-white/5">
-                                    <div className="flex justify-between mb-2">
-                                        <span className="text-sm text-gray-400">Overall Sentiment</span>
-                                        <span ref={textRef} className="text-sm text-[#E3F221] font-bold">Positive (0%)</span>
+                                <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-xl p-5 border border-white/10 backdrop-blur-sm hover:border-[#E3F221]/30 transition-all duration-300 group">
+                                    <div className="flex justify-between mb-3">
+                                        <span className="text-sm text-gray-300 font-medium">Overall Sentiment</span>
+                                        <span ref={textRef} className="text-sm text-[#E3F221] font-bold tracking-wide">Positive (0%)</span>
                                     </div>
-                                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                        <div ref={barRef} className="h-full bg-[#E3F221] w-[0%]"></div>
+                                    <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden relative">
+                                        <div ref={barRef} className="h-full bg-gradient-to-r from-[#E3F221] to-[#E3F221]/70 w-[0%] rounded-full shadow-lg shadow-[#E3F221]/50"></div>
+                                        {/* Shine effect */}
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_2s_infinite]" />
                                     </div>
                                 </div>
 
                                 {/* Key Phrases */}
-                                <div className="space-y-2">
-                                    <div className="flex items-center justify-between text-sm">
-                                        <span className="text-gray-400">Shipping</span>
-                                        <span className="text-green-400">Positive (+0.9)</span>
+                                <div className="space-y-3 bg-gradient-to-br from-white/5 to-transparent rounded-xl p-5 border border-white/10 backdrop-blur-sm">
+                                    <div className="flex items-center justify-between text-sm p-2 rounded-lg hover:bg-white/5 transition-colors">
+                                        <span className="text-gray-300 font-medium">Shipping</span>
+                                        <span className="text-green-400 font-semibold flex items-center gap-1.5">
+                                          <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                                          Positive (+0.9)
+                                        </span>
                                     </div>
-                                    <div className="flex items-center justify-between text-sm">
-                                        <span className="text-gray-400">Packaging</span>
-                                        <span className="text-red-400">Negative (-0.6)</span>
+                                    <div className="flex items-center justify-between text-sm p-2 rounded-lg hover:bg-white/5 transition-colors">
+                                        <span className="text-gray-300 font-medium">Packaging</span>
+                                        <span className="text-red-400 font-semibold flex items-center gap-1.5">
+                                          <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                                          Negative (-0.6)
+                                        </span>
                                     </div>
-                                    <div className="flex items-center justify-between text-sm">
-                                        <span className="text-gray-400">Quality</span>
-                                        <span className="text-green-400">Positive (+0.95)</span>
+                                    <div className="flex items-center justify-between text-sm p-2 rounded-lg hover:bg-white/5 transition-colors">
+                                        <span className="text-gray-300 font-medium">Quality</span>
+                                        <span className="text-green-400 font-semibold flex items-center gap-1.5">
+                                          <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                                          Positive (+0.95)
+                                        </span>
                                     </div>
                                 </div>
                             </div>
