@@ -17,6 +17,13 @@ dist-ssr
 .env.local
 .env.*.local
 
+# Internal documentation
+walkthrough.md
+task.md
+implementation_plan.md
+DEPLOYMENT.md
+CHANGELOG.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
